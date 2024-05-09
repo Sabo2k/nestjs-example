@@ -4,11 +4,11 @@ import styles from './app.module.css';
 import NxWelcome from './nx-welcome';
 
 export function App() {
-  return (
-    <div>
-      <NxWelcome title="librarymanager" />
-    </div>
-  );
+    return (
+        <div>
+            <NxWelcome title="librarymanager" />
+        </div>
+    );
 }
 
 export default App;
