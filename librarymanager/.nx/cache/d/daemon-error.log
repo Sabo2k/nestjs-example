@@ -1,0 +1,26 @@
+Daemon process terminated and closed the connection
+
+Messages from the log:
+    at async getPlugins (/home/sabo/dev/nestjs-example/librarymanager/node_modules/nx/src/daemon/server/plugins.js:14:33)
+    at async getCachedSerializedProjectGraphPromise (/home/sabo/dev/nestjs-example/librarymanager/node_modules/nx/src/daemon/server/project-graph-incremental-recomputation.js:35:25)
+    at async handleRequestProjectGraph (/home/sabo/dev/nestjs-example/librarymanager/node_modules/nx/src/daemon/server/handle-request-project-graph.js:12:24)
+    at async handleResult (/home/sabo/dev/nestjs-example/librarymanager/node_modules/nx/src/daemon/server/server.js:107:16)
+    at async handleMessage (/home/sabo/dev/nestjs-example/librarymanager/node_modules/nx/src/daemon/server/server.js:78:9)
+    at async /home/sabo/dev/nestjs-example/librarymanager/node_modules/nx/src/daemon/server/server.js:45:9
+[NX Daemon Server] - 2024-05-09T17:00:39.600Z - Done responding to the client null
+[NX Daemon Server] - 2024-05-09T17:00:39.600Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 2. Response time: 1.
+[NX Daemon Server] - 2024-05-09T17:00:39.600Z - Time taken for 'Load Nx Plugin: /home/sabo/dev/nestjs-example/librarymanager/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 1.1643360005691648ms
+[NX Daemon Server] - 2024-05-09T17:00:39.600Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-09T17:00:43.607Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-05-09T17:00:43.613Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-05-09T17:00:43.613Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-09T17:00:43.614Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-09T17:00:44.836Z - Time taken for 'Load Nx Plugin: /home/sabo/dev/nestjs-example/librarymanager/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 4.9710340006276965ms
+[NX Daemon Server] - 2024-05-09T17:00:44.837Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-09T17:00:44.838Z - [WATCHER]: Stopping the watcher for /home/sabo/dev/nestjs-example/librarymanager (sources)
+[NX Daemon Server] - 2024-05-09T17:00:44.838Z - [WATCHER]: Stopping the watcher for /home/sabo/dev/nestjs-example/librarymanager (outputs)
+[NX Daemon Server] - 2024-05-09T17:00:44.838Z - Server stopped because: "Lock file changed"
+
+
+
+More information: /home/sabo/dev/nestjs-example/librarymanager/.nx/cache/d/daemon.log
