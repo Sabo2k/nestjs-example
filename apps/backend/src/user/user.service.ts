@@ -9,9 +9,16 @@ import { Repository } from "typeorm";
 @Injectable()
 export class UserService {
 
-    private readonly users: User[] = [];
+    constructor(
+        @InjectRepository(User)
+        private readonly userRepository: Repository<User>
+    ) {}
 
-    findAll(): User[] {
-        return this.users;
+    async findAll(): Promise<User[]> {
+        return this.userRepository.find();
+    }
+
+    async create(user: User): Promise<User> {
+        return this.userRepository.save(user);
     }
 }

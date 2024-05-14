@@ -13,13 +13,3 @@ services:
             POSTGRES_DB: mydatabase 
         ports:
             - '5432:5432'
-
-    backend:
-        depends_on:
-            - postgres
-        restart: unless-stopped
-        build:
-            context: .
-            dockerfile: apps/backend/Dockerfile
-        ports:
-            - '3000:3000'

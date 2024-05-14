@@ -10,7 +10,19 @@ import { DataSource } from 'typeorm';
 import { User } from '../user/user.entity';
 
 @Module({
-    imports: [],
+    imports: [
+        TypeOrmModule.forRoot({
+            type: 'postgres',
+            host: 'localhost',
+            port: 5432,
+            username: 'admin',
+            password: 'admin',
+            database: 'mydatabase',
+            entities: [User],
+            synchronize: true,
+        }),
+        TypeOrmModule.forFeature([User])
+    ],
     controllers: [AppController, UserController],
     providers: [AppService, UserService],
 })

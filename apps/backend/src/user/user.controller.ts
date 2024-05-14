@@ -8,10 +8,15 @@ import { UserService } from './user.service';
 @Controller('user')
 export class UserController {
 
-    constructor(private userService: UserService) {}
+    constructor(private readonly userService: UserService) {}
 
     @Get()
-    async getAllUsers(): Promise<User[]> {
+    async getAllUsers() {
         return this.userService.findAll();
     }    
+
+    @Post()
+    createUser(@Body() user: User) {
+        return this.userService.create(user);
+    }
 }
