@@ -1,13 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
 
-import NxWelcome from './nx-welcome';
+import { ChakraProvider } from '@chakra-ui/react';
+import AppRouter from '../Router';
 
 export function App() {
     return (
-        <div>
-            <NxWelcome title="librarymanager" />
-        </div>
+        <AppRouter/>
     );
 }
 
