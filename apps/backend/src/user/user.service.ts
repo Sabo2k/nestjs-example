@@ -27,6 +27,8 @@ export class UserService {
     }
 
     async update(id: string, user: User): Promise<User> {
+        
+        const userToBeUpdated = await this.userRepository.findOneBy({ id });
         await this.userRepository.update(id, user);
         return this.userRepository.findOneBy({ id });
     }

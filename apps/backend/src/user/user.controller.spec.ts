@@ -110,6 +110,32 @@ describe('UserController', () => {
     });
 
 
+    it('updateUserById => should find a user by a given id and update its data', async () => {
+        
+        // arrange
+        const id = '1';
+        const userToBeUpdated = {
+            id: '1',
+            username: 'johndoe',
+            password: '12345'
+        };
+
+        const updatedUser = {
+            username: 'donjoe',
+            password: '54321'
+        } as User;
+        
+        jest.spyOn(mockUserService, 'update').mockReturnValue(updatedUser);
+
+        // act
+        const result = await userController.updateUserById(id, updatedUser);
+
+        // assert
+        expect(result).toEqual(updatedUser);
+        expect(mockUserService.update).toHaveBeenCalled();
+        expect(mockUserService.update).toHaveBeenCalledWith(id, updatedUser);
+    });
+
     it('deleteUserById => should find and remove a user by a given id and return Number of affected rows', async () => {
         
         // arrange
