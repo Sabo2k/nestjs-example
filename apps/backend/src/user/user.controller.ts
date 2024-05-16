@@ -11,12 +11,22 @@ export class UserController {
     constructor(private readonly userService: UserService) {}
 
     @Get()
-    async getAllUsers() {
+    getAllUsers() {
         return this.userService.findAll();
     }    
+
+    @Get(':id')
+    getUserById(@Param('id') id: string) {
+        return this.userService.findOne(id);
+    }
 
     @Post()
     createUser(@Body() user: User) {
         return this.userService.create(user);
+    }
+
+    @Delete(':id')
+    deleteUserById(@Param('id') id: string) {
+        return this.userService.remove(id);
     }
 }
