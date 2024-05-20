@@ -22,7 +22,8 @@
         "reflect-metadata": "^0.1.14",
         "rxjs": "^7.8.1",
         "tslib": "^2.6.2",
-        "typeorm": "^0.3.20"
+        "typeorm": "^0.3.20",
+        "typeorm-extension": "^3.5.1"
     },
     "devDependencies": {
         "@nestjs/schematics": "^10.1.1",
