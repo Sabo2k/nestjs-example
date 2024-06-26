@@ -1,23 +1,3 @@
-# Tech Stack
-
-### General
-- NX
-- Eslint
-- Jest
-- pnpm
-- Docker
-
-### Backend
-- Nest JS
-- TypeORM
-- PostgreSQL
-
-### Frontend
-- React
-- React Router Dom
-- Chakra UI
-- Tanstack Query
-
 # Running tasks
 
 To execute tasks with Nx use the following syntax:
@@ -40,7 +20,7 @@ nx run-many -t <target1> <target2> -p <proj1> <proj2>
 
 Targets can be defined in the `package.json` or `projects.json`. Learn more [in the docs](https://nx.dev/features/run-tasks).
 
-# Static Code Analysis
+# Lint
 
 ### Lint Backend
 
@@ -72,7 +52,6 @@ nx run frontend:test
 
 The build artifacts are storedin the output directory (e.g. `dist/` or `build/`), ready to be deployed.
 
-
 ### Build Backend
 To build the backend application, run 
 ```
@@ -84,6 +63,20 @@ nx run backend:build
 To build the frontend application, run 
 ```
 nx run frontend:build
+```
+
+# Migrate Database
+```
+npx prisma migrate dev
+```
+
+# Seed Database
+```
+```
+
+# View Backend Database
+```
+npx prisma studio
 ```
 
 # Run
@@ -99,7 +92,7 @@ nx run backend:serve
 nx run frontend:serve
 ```
 
-# Project graph
+# View Project graph
 
 To view the graph of the workspace, run
 ```

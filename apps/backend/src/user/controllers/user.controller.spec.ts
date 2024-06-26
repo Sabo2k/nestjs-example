@@ -1,7 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserController } from './user.controller';
-import { UserService } from './user.service';
-import { User } from './user.entity';
+import { UserService } from '../services/user.service';
+import { faker } from '@faker-js/faker';
+import { User } from '@prisma/client';
 
 /**
  * @see https://dev.to/niemet0502/writing-unit-tests-for-your-nestjs-rest-api-3cgg
@@ -13,11 +14,10 @@ describe('UserController', () => {
 
     const mockUserService = {
         create: jest.fn(),
-        findAll: jest.fn(),
-        findOne: jest.fn(),
         update: jest.fn(),
         delete: jest.fn(),
-        remove: jest.fn(), 
+        findAll: jest.fn(),
+        findOne: jest.fn(),
     };
 
     beforeEach(async () => {
@@ -46,14 +46,14 @@ describe('UserController', () => {
         
         // arrange
         const createUserEntity = {
-            username: 'johndoe',
-            password: '12345',
+            username: faker.internet.userName(),
+            password: faker.internet.password(),
         } as User;
         
         const userToBeCreated = {
             id: 1,
-            username: 'johndoe',
-            password: '12345',
+            username: faker.internet.userName(),
+            password: faker.internet.password(),
         };
 
         jest.spyOn(mockUserService, 'create').mockReturnValue(userToBeCreated);
@@ -73,8 +73,8 @@ describe('UserController', () => {
         // arrange
         const user = {
             id: 1,
-            username: 'johndoe',
-            password: '12345'
+            username: faker.internet.userName(),
+            password: faker.internet.password(),
         };
         const users = [user];
 
@@ -91,11 +91,11 @@ describe('UserController', () => {
 
     it('getUserById => should find a user by a given id and return its data', async () => {
         // arrange
-        const id = '1';
+        const id = 1;
         const user = {
             id: 1,
-            username: 'johndoe',
-            password: '12345'
+            username: faker.internet.userName(),
+            password: faker.internet.password(),
         };
 
         jest.spyOn(mockUserService, 'findOne').mockReturnValue(user);
@@ -113,16 +113,16 @@ describe('UserController', () => {
     it('updateUserById => should find a user by a given id and update its data', async () => {
         
         // arrange
-        const id = '1';
+        const id = 1;
         const userToBeUpdated = {
-            id: '1',
-            username: 'johndoe',
-            password: '12345'
+            id: 1,
+            username: faker.internet.userName(),
+            password: faker.internet.password(),
         };
 
         const updatedUser = {
-            username: 'donjoe',
-            password: '54321'
+            username: faker.internet.userName(),
+            password: faker.internet.password(),
         } as User;
         
         jest.spyOn(mockUserService, 'update').mockReturnValue(updatedUser);
@@ -136,17 +136,15 @@ describe('UserController', () => {
         expect(mockUserService.update).toHaveBeenCalledWith(id, updatedUser);
     });
 
-    it('deleteUserById => should find and remove a user by a given id and return Number of affected rows', async () => {
+    it('deleteUserById => should find and delete a user by a given id and return Number of affected rows', async () => {
         
         // arrange
-        const id = '1';
+        const id = 1;
         const user = {
             id: 1,
-            username: 'johndoe',
-            password: '12345'
+            username: faker.internet.userName(),
+            password: faker.internet.password(),
         };
-
-        const numberOfAffectedRows = 1;
 
         jest.spyOn(mockUserService, 'delete').mockReturnValue(user);
 
@@ -155,7 +153,7 @@ describe('UserController', () => {
 
         // assert
         expect(result).toEqual(result);
-        expect(mockUserService.remove).toHaveBeenCalled();
-        expect(mockUserService.remove).toHaveBeenCalledWith(id);
+        expect(mockUserService.delete).toHaveBeenCalled();
+        expect(mockUserService.delete).toHaveBeenCalledWith(id);
     });
 });
